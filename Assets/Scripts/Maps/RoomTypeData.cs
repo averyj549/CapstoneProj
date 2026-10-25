@@ -26,6 +26,8 @@ public class RoomTypeData : DatabaseEntry
     public bool isEnd;
     public bool isCombat;
     public bool isShop;
+    [Tooltip("Always play the intense run track in sectors of this type (elites, final sector).")]
+    public bool intenseMusic;
 
     [Header("Placement")]
     public bool canRandomSpawn = true;

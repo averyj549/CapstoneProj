@@ -112,9 +112,9 @@ MonoBehaviour:
   indicatorPos: {fileID: 0}
   interactPromptUI: {fileID: 8313890917254530519}
   interactPrompt: '[F]'
-  costPerStructure: 50
-  ammoRestoreCost: 20
-  fullRestoreCost: 200
+  costPerStructure: 100
+  ammoRestoreCost: 35
+  fullRestoreCost: 400
   structureRestored: 1
   ammoRestored: 5
 --- !u!61 &5462704660729828280

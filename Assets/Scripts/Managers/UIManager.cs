@@ -138,7 +138,7 @@ public class UIManager : MonoBehaviour
     {
         transitioning = false;
 
-        for (int i = stack.Count; i >= 0 ; i--)
+        for (int i = stack.Count - 1; i >= 0 ; i--)
         {
             var screen = stack[i];
             if(screen.pausesGame) TimescaleManager.Instance.UnpauseGame(screen);

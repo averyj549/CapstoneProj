@@ -112,9 +112,11 @@ MonoBehaviour:
   indicatorPos: {fileID: 0}
   interactPromptUI: {fileID: 7809824608136542503}
   interactPrompt: '[F]'
-  visual: {fileID: 1969712302566649882}
-  standPos: {x: 0, y: 0}
-  isMajorUpgrade: 0
+  slotIndex: 0
+  allowReroll: 1
+  baseRerollCost: 50
+  rerollCostStep: 50
+  maxRerolls: -1
 --- !u!61 &5462704660729828280
 BoxCollider2D:
   m_ObjectHideFlags: 0

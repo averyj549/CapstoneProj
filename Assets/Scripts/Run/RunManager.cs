@@ -43,6 +43,13 @@ public class RunManager : MonoBehaviour
 
     [Header("Run Config")]
 
+    [Header("Music")]
+    [SerializeField] private string runTrack = "ActionMusicMedium";
+    [SerializeField] private string intenseTrack = "ActionMusicHeavy";
+    [Tooltip("Combat sectors at or beyond this fraction of the map's depth use the intense track.")]
+    [SerializeField, Range(0f, 1f)] private float intenseFromProgress = 0.6f;
+    [SerializeField] private float runEndMusicFade = 2.5f;
+
     [Header("Shards (meta currency)")]
     [Tooltip("Banked for clearing a combat sector flagged with a shard cache on the map.")]
     [SerializeField] private int shardsPerCache = 10;
@@ -116,8 +123,6 @@ public class RunManager : MonoBehaviour
 
     public void InitializeRun()
     {
-        AudioManager.Instance.PlayMusicTrack("ActionMusicMedium", true);
-
         if (RunDataCarrier.IsNewRun)
         {
             BeginNewRun();
@@ -197,11 +202,26 @@ public class RunManager : MonoBehaviour
 
     #region Ending Runs
 
+    // Picked once per sector on entry, so the music never flips mid-fight.
+    // Intense: sector types flagged intenseMusic (elite, final), or any combat sector deep into the map.
+    private void UpdateMusic(MapNode node)
+    {
+        if (AudioManager.Instance == null || node == null) return;
+
+        int maxDepth = Mathf.Max(1, currentRun.map.rowCount - 1);
+        bool deep = node.depth >= Mathf.CeilToInt(maxDepth * intenseFromProgress);
+        bool intense = node.type != null && (node.type.intenseMusic || (node.type.isCombat && deep));
+
+        AudioManager.Instance.PlayMusicTrack(intense ? intenseTrack : runTrack);
+    }
+
     private void HandleRunEnd(bool victory)
     {
         if (runEnded) return;
         runEnded = true;
         transitioning = true;
+
+        if (AudioManager.Instance != null) AudioManager.Instance.StopMusic(runEndMusicFade);
 
         // Update profile based on run results
         var profile = GameManager.Instance.ActiveProfile;
@@ -273,6 +293,7 @@ public class RunManager : MonoBehaviour
         activePlayerUI.ToggleUI(true);
 
         OnPlayerRoomChanged?.Invoke(newNode.coordinates);
+        UpdateMusic(newNode);
 
         SaveCurrentRun();
 

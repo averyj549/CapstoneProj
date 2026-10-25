@@ -32,6 +32,9 @@ public class HubManager : MonoBehaviour
     // A weapon is optional: without one the run starts melee-only until a weapon is found
     public bool CanBeginRun => pendingMap != null && pendingLoadout != null;
 
+    [Header("Music")]
+    [SerializeField] private string hubTrack = "MenuMusic01";
+
     [Header("Fallbacks")]
     [Tooltip("Used only if the profile has no unlocked weapon at all (mark a weapon 'Unlocked By Default' instead).")]
     [SerializeField] private PlayerWeapon defaultWeapon;
@@ -59,6 +62,9 @@ public class HubManager : MonoBehaviour
         RerollSeed();
 
         UIManager.Instance.OpenScreen("baseScreen");
+
+        // Same track as the menu, so it carries on seamlessly; crossfades back in after a run
+        if (AudioManager.Instance != null) AudioManager.Instance.PlayMusicTrack(hubTrack);
     }
 
     public void CheckSavedRun()

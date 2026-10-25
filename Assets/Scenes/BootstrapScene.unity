@@ -268,9 +268,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
   mixer: {fileID: 24100000, guid: 8de53d10e3f869f46ad71ff574f56e38, type: 2}
-  masterParam: MasterVolume
-  musicParam: MusicVolume
-  sfxParam: SFXVolume
 --- !u!4 &562352198
 Transform:
   m_ObjectHideFlags: 0
@@ -550,6 +547,12 @@ MonoBehaviour:
     loop: 1
     doPitchVariation: 0
     pitchVariationAmount: 0
+  - soundName: ActionMusicHeavy
+    clip: {fileID: 8300000, guid: b388360aecc9f2045b69cec4681038d3, type: 3}
+    volume: 0
+    loop: 1
+    doPitchVariation: 0
+    pitchVariationAmount: 0
   sfxMixer: {fileID: 7616444495105090416, guid: 8de53d10e3f869f46ad71ff574f56e38, type: 2}
   musicMixer: {fileID: -2483756958336959112, guid: 8de53d10e3f869f46ad71ff574f56e38, type: 2}
   sfxVolume: 1
@@ -557,6 +560,7 @@ MonoBehaviour:
   sfxSourcePrefab: {fileID: 2406970233207485200, guid: 0b8ff7363012a5a47842adb819b11cfc, type: 3}
   musicSourceA: {fileID: 1012444244}
   musicSourceB: {fileID: 1012444243}
+  musicFadeTime: 1.5
 --- !u!4 &1012444242
 Transform:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ MonoBehaviour:
   isEnd: 1
   isCombat: 0
   isShop: 0
+  intenseMusic: 1
   canRandomSpawn: 0
   baseWeight: 1
   weightOverProgress:

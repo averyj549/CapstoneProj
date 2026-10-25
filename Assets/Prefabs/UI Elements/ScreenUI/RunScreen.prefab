@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: // DELVE BRIEFING
+  m_text: // DELVE PREPARATION
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f377b322220fb4488e4281bac69437b, type: 2}
   m_sharedMaterial: {fileID: -5492826108559218408, guid: 3f377b322220fb4488e4281bac69437b, type: 2}
