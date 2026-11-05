@@ -41,9 +41,14 @@ public class PlayerAnimator : MonoBehaviour
     private readonly int AttackUpLightHash_Two = Animator.StringToHash("AttackUpLight2");
     private readonly int AttackUpLightHash_Three = Animator.StringToHash("AttackUpLight3");
 
+    private readonly int AttackDownLightHash_One = Animator.StringToHash("AttackDownLight1");
+    private readonly int AttackDownLightHash_Two = Animator.StringToHash("AttackDownLight2");
+    private readonly int AttackDownLightHash_Three = Animator.StringToHash("AttackDownLight3");
+
     private readonly int AttackHeavyTriggerHash = Animator.StringToHash("DoHeavySwing");
     private readonly int AttackSideHeavyWindupHash = Animator.StringToHash("AttackSideHeavyWindup");
     private readonly int AttackUpHeavyWindupHash = Animator.StringToHash("AttackUpHeavyWindup");
+    private readonly int AttackDownHeavyWindupHash = Animator.StringToHash("AttackDownHeavyWindup");
 
 
     private void Awake()
@@ -179,7 +184,6 @@ public class PlayerAnimator : MonoBehaviour
                 switch (animationDir)
                 {
                     case AttackDirection.Side:
-                    case AttackDirection.Down:
                         if (combo <= 1)
                             animator.Play(AttackSideLightHash_One);
                         else if (combo == 2)
@@ -196,6 +200,15 @@ public class PlayerAnimator : MonoBehaviour
                         else if (combo == 3)
                             animator.Play(AttackUpLightHash_Three);
                         break;
+
+                    case AttackDirection.Down:
+                        if (combo <= 1)
+                            animator.Play(AttackDownLightHash_One);
+                        else if (combo == 2)
+                            animator.Play(AttackDownLightHash_Two);
+                        else if (combo == 3)
+                            animator.Play(AttackDownLightHash_Three);
+                        break;
                 }
                 break;
 
@@ -207,12 +220,15 @@ public class PlayerAnimator : MonoBehaviour
                 switch (animationDir)
                 {
                     case AttackDirection.Side:
-                    case AttackDirection.Down:
                         animator.Play(AttackSideHeavyWindupHash);
                         break;
 
                     case AttackDirection.Up:
                         animator.Play(AttackUpHeavyWindupHash);
+                        break;
+
+                    case AttackDirection.Down:
+                        animator.Play(AttackDownHeavyWindupHash);
                         break;
                 }
 

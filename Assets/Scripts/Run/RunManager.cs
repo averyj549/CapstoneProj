@@ -252,6 +252,8 @@ public class RunManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
+        ScreenGlitch.Instance.SetBaseline(0f);
+
         string screenTag = victory
             ? "victoryScreen"
             : "failureScreen";
